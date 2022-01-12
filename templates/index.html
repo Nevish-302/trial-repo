@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+<table class="table" style="width:80%;margin: 0 10% 0 10%">
+<tr>
+{% for column in table[0] %}
+<th scope="col">{{column}}</th>
+{% endfor %}
+<th scope="col">Current_price</th>
+<th scope="col">Total_worth</th>
+</tr>
+{% for row in table %}
+<tr>
+{% for column in row %}
+<td scope="col">{{row[column]}}</td>
+{% endfor %}
+<td scope="col">{{Se[row["symbol"]] | usd}}</td>
+<td scope="col">{{(Se[row["symbol"]] * row["quantity"]) | usd}} </td>
+
+</tr>
+{% endfor %}
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th scope="col" style = "width: 25%">cash</th>
+<td scope="col" style = "width: 25%">{{cash[0]["cash"] | usd}}</td>
+<td></td>
+<th scope="col" style = "width: 25%">Grand Total</th>
+<td scope="col" style = "width: 25%">{{(su + cash[0]["cash"]) | usd}}</td>
+</tr>
+</table>
+{% endblock %}

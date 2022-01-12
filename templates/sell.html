@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+{{cash}}
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select disable selected class="form-select mx-auto w-auto" name="symbol" id="symbol">
+             <option selected>Select Symbol from this menu</option>
+            {% for wreck in select %}
+                <option value="{{wreck["symbol"]}}">{{wreck["symbol"]}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}

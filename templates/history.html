@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<table class="table" style="width:80%;margin: 0 10% 0 10%">
+<tr>
+{% for column in table1[0] %}
+<th class = "rand" scope="col">{{column}}</th>
+{% endfor %}
+<th class = "rand">Bought or Sold</th>
+</tr>
+{% for row in table1 %}
+<tr>
+{% for column in row %}
+<td class = "rand" scope="col">{{row[column]}}</td>
+{% endfor %}
+<td class = "rand">B</td>
+</tr>
+{% endfor %}
+{% for row in table2 %}
+<tr>
+{% for column in row %}
+<td class = "rand" scope="col">{{row[column]}}</td>
+{% endfor %}
+<td class = "rand">S</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
